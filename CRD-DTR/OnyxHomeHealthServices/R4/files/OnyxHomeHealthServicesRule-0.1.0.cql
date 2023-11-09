@@ -5,20 +5,23 @@ include FHIRHelpers version '4.0.0' called FHIRHelpers
 parameter Patient Patient
 parameter service_request ServiceRequest
 
-define "Age":
-  AgeInYears()
+define "Code":
+service_request.code[0].coding[0].code.value
+
+define "PractitionerID":
+service_request.performer[0].reference.value
 
 define RULE_APPLIES:
-  true
+true
 
 define PRIORAUTH_REQUIRED:
-  true 
+true
 
 define DOCUMENTATION_REQUIRED:
   true
 
 define APPROVE_PRIORAUTH:
-  "Age" >= 70
+  "Code" = 'G0179' and ("PractitionerID" = 'Practitioner/pra1255' or "PractitionerID" = 'Practitioner/162902') or "Code" = 'G0180' and ("PractitionerID" = 'Practitioner/pra1255' or "PractitionerID" = 'Practitioner/162902') or "Code" = 'G0155' and ("PractitionerID" = 'Practitioner/pra1255' or "PractitionerID" = 'Practitioner/162902')
 
 define RESULT_InfoLink:
   'https://www.cms.gov/Outreach-and-Education/Medicare-Learning-Network-MLN/MLNProducts/Downloads/Medicare-Home-Health-Benefit-Text-Only.pdf'
@@ -28,7 +31,7 @@ define RESULT_QuestionnaireOrderUri:
 
 define RESULT_QuestionnairePlanOfCareUri:
   'Questionnaire/OnyxHomeHealthServicesPlanOfCare'
-  
+
 define RESULT_QuestionnaireFaceToFaceUri:
   'Questionnaire/OnyxHomeHealthServicesFaceToFace'
 
