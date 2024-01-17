@@ -14,6 +14,17 @@
                 "S1031"
             ]
 
+        },
+        {
+            "codeSystem": "epichcpcs",
+            "codes": [
+                "E0607",
+                "E2100",
+                "E2101",
+                "K0554",
+                "S1031"
+            ]
+
         }
     ],
     "fhirVersions": [

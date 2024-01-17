@@ -5,6 +5,10 @@
     {
       "codeSystem": "hcpcs",
       "codes": ["E9999","349199","E9998","E0250"]
+    },
+    {
+      "codeSystem": "epichcpcs",
+      "codes": ["E9999","349199","E9998","E0250"]
     }
   ],
   "fhirVersions": ["R4"]

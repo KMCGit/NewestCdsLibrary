@@ -5,6 +5,10 @@
     {
       "codeSystem": "hcpcs",
       "codes": ["E0471", "E0470"]
+    },
+    {
+      "codeSystem": "epichcpcs",
+      "codes": ["E0471", "E0470"]
     }
   ],
   "fhirVersions": ["R4"]

@@ -15,6 +15,12 @@
             "codes": [
                 "E0470", "E0601"
             ]
+        },
+        {
+            "codeSystem": "epichcpcs",
+            "codes": [
+                "E0470", "E0601"
+            ]
         }
     ],
     "fhirVersions": [
