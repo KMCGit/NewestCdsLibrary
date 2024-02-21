@@ -8,11 +8,17 @@ parameter medication_request MedicationRequest
 parameter medication_dispense MedicationDispense
 parameter medication_statement MedicationStatement
 
+define "Age":
+    AgeInYears()
+    
 define RULE_APPLIES:
     true
 
 define PRIORAUTH_REQUIRED:
-  false
+  true
+
+define APPROVE_PRIORAUTH:
+  Age<70
 
 define DOCUMENTATION_REQUIRED:
   true
@@ -35,18 +41,17 @@ define RESULT_requestId:
 define RESULT_dispense:
   medication_dispense
 
-define "MedicationCodingFromParameter": Coalesce(medication_request.medication.coding, medication_dispense.medication.coding)
-
+define "MedicationCodingFromParameter": Coalesce(medication_request.medication.coding)
 define "MedicationStatementCodingFromParamter": medication_statement.medication.coding
   
 define ALTERNATIVE_THERAPY:
-  if MedicationCodingFromParameter.code.value in { '105611', '239983' }
+  if MedicationCodingFromParameter.code.value in { '105585','105611', '239983' }
   then Code { code: '197388', display: 'Azathioprine 50 MG Oral', system: 'http://www.nlm.nih.gov/research/umls/rxnorm' }
   else null
 
 define DRUG_INTERACTION:
   if MedicationCodingFromParameter.code.value in { '105585' } 
-    and MedicationStatementCodingFromParamter.code.value in { '105611', '197388', '239983' }
+    or MedicationStatementCodingFromParamter.code.value in { '105611', '197388', '239983' }
     then true
   else if MedicationCodingFromParameter.code.value in { '105611', '197388', '239983' } 
     and MedicationStatementCodingFromParamter.code.value in { '105585' }

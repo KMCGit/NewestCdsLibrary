@@ -1,18 +1,10 @@
 {
   "topic": "NuclearStressTest",
-  "payers": ["cms"],
+  "payers": ["cms","SilverCare"],
   "mappings": [
     {
       "codeSystem": "hcpcs",
-      "codes": ["E9999","349199","E9998","E0250"]
-    },
-    {
-      "codeSystem": "epichcpcs",
-      "codes": ["E9999","349199","E9998","E0250"]
-    },
-    {
-      "codeSystem": "cpt",
-      "codes": ["78483"]
+      "codes": ["E9999","349199","E9998"]
     }
   ],
   "fhirVersions": ["R4"]
