@@ -1,6 +1,6 @@
 {
   "topic": "NuclearStressTest",
-  "payers": ["cms"],
+  "payers": ["cms","sc"],
   "mappings": [
     {
       "codeSystem": "hcpcs",
